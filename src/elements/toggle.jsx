@@ -6,18 +6,28 @@ import { Typography, TypographyVariant } from './typography';
 import { Color } from '../tokens/colors';
 import { Radius } from '../tokens/radiuses';
 
+const StyledWrapper = styled.div`
+  display: inline-flex;
+  align-items: center;
+`;
+
+const StyledLabel = styled(Typography).attrs({
+  as: 'label',
+  variant: TypographyVariant.TEXT_1
+})`
+  padding-left: 8px;
+  cursor: pointer;
+`;
+
 const StyledToggle = styled(BaseButton)`
   position: relative;
+  top: 1px;
   width: 22px;
-  height: 22px;
+  height: 12px;
 
   &::before {
     content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
+    display: block;
     height: 8px;
     border-radius: ${Radius[4]};
     background-color: ${Color.GRAY_10};
@@ -61,19 +71,6 @@ const StyledToggle = styled(BaseButton)`
   }
 `;
 
-const StyledLabel = styled(Typography).attrs({
-  as: 'label',
-  variant: TypographyVariant.TEXT_1
-})`
-  padding-left: 8px;
-  cursor: pointer;
-`;
-
-const StyledWrapper = styled.div`
-  display: inline-flex;
-  align-items: center;
-`;
-
 function Toggle({ className, label }) {
   const id = useId();
   const [isChecked, setIsChecked] = useState('false');
@@ -84,7 +81,7 @@ function Toggle({ className, label }) {
     <StyledWrapper className={className}>
       <StyledToggle
         id={id}
-        role='checkbox'
+        role="checkbox"
         aria-checked={isChecked}
         onClick={toggle}
       />
