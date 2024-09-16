@@ -5,7 +5,6 @@ import { BaseButton } from '../helpers/base-button';
 import { Color } from '../tokens/colors';
 import { Radius } from '../tokens/radiuses';
 
-
 const ButtonSize = {
   MEDIUM: 'medium',
   LARGE: 'large'
