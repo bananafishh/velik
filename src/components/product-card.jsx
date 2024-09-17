@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { Link } from 'react-router-dom';
 import { Radius } from '../tokens/radiuses';
 import { Typography, TypographyVariant } from '../elements/typography';
 import { Button, ButtonVariant } from '../elements/button';
@@ -8,7 +7,7 @@ import { IconButton } from '../elements/icon-button';
 import { Icon } from '../elements/icon';
 import { IconName } from '../tokens/icons';
 import { Color } from '../tokens/colors';
-import { Shadow } from '../tokens/shadows';
+import { BaseCard } from '../helpers/base-card';
 
 const StyledImage = styled.img`
   width: 100%;
@@ -109,30 +108,13 @@ const DISABLED_CSS = css`
   }
 `;
 
-const StyledWrapper = styled(Link)`
-  position: relative;
-  display: grid;
-  border-radius: ${Radius[4]};
-  background-color: ${Color.GRAY_40};
-  overflow: hidden;
-
-  &:hover,
-  &:focus {
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: ${Radius[4]};
-      box-shadow: ${Shadow.CARD_HOVER_ADULT}; 
-    }
-  }
-
+const StyledWrapper = styled(BaseCard)`
   ${({ isDisabled }) => isDisabled && DISABLED_CSS}
 `;
 
 function ProductCard({ className, image, imageAlt, name, price, isBestseller, isNewItem, hasDiscount, isDisabled }) {
   return (
-    <StyledWrapper className={className} to="#" isDisabled={isDisabled}>
+    <StyledWrapper className={className} isDisabled={isDisabled} to="#">
       <article>
         <StyledImage src={image} alt={imageAlt} />
 

@@ -1,29 +1,8 @@
 import styled from 'styled-components';
 
-import { Link } from 'react-router-dom';
 import { Typography, TypographyVariant } from '../elements/typography';
 import { Color } from '../tokens/colors';
-import { Radius } from '../tokens/radiuses';
-import { Shadow } from '../tokens/shadows';
-
-const StyledWrapper = styled(Link)`
-  position: relative;
-  display: grid;
-  border-radius: ${Radius[4]};
-  background-color: ${Color.GRAY_40};
-  overflow: hidden;
-
-  &:hover,
-  &:focus {
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: ${Radius[4]};
-      box-shadow: ${Shadow.CARD_HOVER_ADULT}; 
-    }
-  }
-`;
+import { BaseCard } from '../helpers/base-card';
 
 const StyledImage = styled.img`
   width: 100%;
@@ -55,7 +34,7 @@ const StyledDate = styled(Typography).attrs({
 
 function NewsCard({ className, title, date, image, imageAlt }) {
   return (
-    <StyledWrapper className={className}>
+    <BaseCard className={className} to="#">
       <article>
         <StyledImage src={image} alt={imageAlt} />
 
@@ -64,7 +43,7 @@ function NewsCard({ className, title, date, image, imageAlt }) {
           <StyledDate>{date}</StyledDate>
         </StyledContent>
       </article>
-    </StyledWrapper>
+    </BaseCard>
   );
 }
 

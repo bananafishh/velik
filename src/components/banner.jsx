@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { Link } from 'react-router-dom';
-import { Radius } from '../tokens/radiuses';
 import { Color } from '../tokens/colors';
 import { Font } from '../tokens/fonts';
-import { Shadow } from '../tokens/shadows';
+import { BaseCard } from '../helpers/base-card';
 
 const BannerSize = {
   MEDIUM: 'medium',
@@ -61,26 +59,10 @@ const BannerSizeToCss = {
   `
 };
 
-const StyledWrapper = styled(Link).attrs(({ size }) => ({ 
+const StyledWrapper = styled(BaseCard).attrs(({ size }) => ({ 
   size: size || BannerSize.MEDIUM,
 }))`
-  position: relative;
-  display: grid;
   height: 140px;
-  border-radius: ${Radius[4]};
-  background-color: ${Color.GRAY_40};
-  overflow: hidden;
-
-  &:hover,
-  &:focus {
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: ${Radius[4]};
-      box-shadow: ${Shadow.CARD_HOVER_ADULT}; 
-    }
-  }
 
   ${({ size }) => BannerSizeToCss[size]}
 `;

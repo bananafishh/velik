@@ -1,29 +1,12 @@
 import styled from 'styled-components';
 
-import { Link } from 'react-router-dom';
 import { Typography, TypographyVariant } from '../elements/typography';
 import { Color } from '../tokens/colors';
 import { Radius } from '../tokens/radiuses';
-import { Shadow } from '../tokens/shadows';
+import { BaseCard } from '../helpers/base-card';
 
-const StyledWrapper = styled(Link)`
-  position: relative;
-  display: grid;
+const StyledWrapper = styled(BaseCard)`
   height: 140px;
-  border-radius: ${Radius[4]};
-  background-color: ${Color.GRAY_40};
-  overflow: hidden;
-
-  &:hover,
-  &:focus {
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: ${Radius[4]};
-      box-shadow: ${Shadow.CARD_HOVER_ADULT};
-    }
-  }
 
   @media (min-width: 768px) {
     height: 100px;
